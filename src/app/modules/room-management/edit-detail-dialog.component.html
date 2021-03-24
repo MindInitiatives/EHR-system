@@ -1,0 +1,67 @@
+<!-- 
+<h2 mat-dialog-title style="font-weight: bold; margin-bottom: 50px;">Edit User Detail</h2>
+
+<div mat-dialog-content>
+
+<form [formGroup]="form" class="example-form">
+  
+<table class="example-full-width" cellspacing="0"><tr>
+  <td><mat-form-field class="example-full-width">
+    <mat-label>First name</mat-label>
+    <input formControlName="firstname" [value]="data.firstname" matInput>
+  </mat-form-field></td>
+  <td><mat-form-field class="example-full-width">
+    <mat-label>Last name</mat-label>
+    <input formControlName="lastname" [value]="data.lastname" matInput>
+  </mat-form-field></td>
+</tr></table>
+    <mat-form-field class="example-full-width">
+        <mat-label>Address</mat-label>
+        <textarea formControlName="address" [value]="data.address" matInput placeholder="Ex. 100 Main St">1600 Amphitheatre Pkwy</textarea>
+      </mat-form-field>
+
+  <table class="example-full-width" cellspacing="0"><tr>
+    <td><mat-form-field class="example-full-width">
+        <mat-label>Telephone</mat-label>
+        <span matPrefix>+234 &nbsp;</span>
+        <input formControlName="phone" [value]="data.phone" type="text" matInput placeholder="555-555-1234">
+        <mat-icon matSuffix>mode_edit</mat-icon>
+      </mat-form-field></td>
+    <td><mat-form-field class="example-full-width">
+        <mat-label>Email</mat-label>
+        <input formControlName="email" [value]="data.email" matInput  placeholder="Ex. pat@example.com">
+        <mat-error *ngIf="form.controls.email.hasError('email') && !form.controls.email.hasError('required')">
+          Please enter a valid email address
+        </mat-error>
+        <mat-error *ngIf="form.controls.email.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+      </mat-form-field></td>
+  </tr></table>
+
+<table class="example-full-width" cellspacing="0"><tr>
+    <td><mat-form-field class="example-full-width">
+        <mat-label>Room Booked</mat-label>
+        <mat-select formControlName="roomBooked" [value]="data.roomBooked" required>
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let room of rooms" [value]="room.name">
+            {{room.name}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.controls.whom.hasError('required')">Please choose a room</mat-error>
+      </mat-form-field></td>
+    
+  </tr></table>
+
+  
+  </form>
+
+  <ng-template #loading>
+    Loading User...
+  </ng-template>
+
+</div>
+<div mat-dialog-actions>
+<button mat-button (click)="onNoClick()">Back</button>
+<button [disabled]="!form.valid" (click)="updateAppointment(appointmentObj)"  type="submit" mat-raised-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Submit</button>
+</div> -->
