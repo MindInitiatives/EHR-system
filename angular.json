@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ehr"
+    }
+  },
+  "defaultProject": "ehr",
+  "cli": {
+    "analytics": "a29a4582-d0af-4341-b0b5-ffda1ae83250"
+  }
 }
