@@ -18,6 +18,7 @@ import { MatTableModule } from '@angular/material/table'
 import { MatTableResponsiveModule } from 'src/app/shared/widgets/mat-table-responsive/mat-table-responsive.module';
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
+import { MatRadioModule } from '@angular/material/radio'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 import { HotelService } from '../../services/hotel.service'
 import { ValidateService } from '../../services/validate.service'
@@ -29,10 +30,11 @@ import { DefaultComponent } from './default.component';
 import { StoreModule } from '@ngrx/store';
 // import { userFeatureKey, reducer } from 'src/app/user/store/reducer/reducer.reducer';
 import { EditUserComponent } from 'src/app/components/edit-user/edit-user.component';
-import { ViewUsersComponent } from 'src/app/components/view-users/view-users.component';
+import { EditModalComponent, ViewUsersComponent } from 'src/app/components/view-users/view-users.component';
 import { UserDetailComponent } from 'src/app/components/user-detail/user-detail.component';
 import { RegisterUserComponent } from 'src/app/components/register-user/register-user.component';
 import { DefaultRoutingModule } from './default.routing';
+import { HotelInfomationComponent } from 'src/app/components/hotel-infomation/hotel-infomation.component';
 
 
 
@@ -42,7 +44,9 @@ import { DefaultRoutingModule } from './default.routing';
     EditUserComponent,
     ViewUsersComponent,
     UserDetailComponent,
-    RegisterUserComponent
+    RegisterUserComponent,
+    EditModalComponent,
+    HotelInfomationComponent
   ],
   imports: [
     CommonModule,
@@ -65,6 +69,7 @@ import { DefaultRoutingModule } from './default.routing';
     MatInputModule,
     MatDatepickerModule,
     FormsModule,
+    MatRadioModule,
     // MatNativeDateModule,
     MatMomentDateModule,
     ReactiveFormsModule,

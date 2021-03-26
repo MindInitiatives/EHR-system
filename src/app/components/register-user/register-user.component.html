@@ -20,32 +20,39 @@
     <!-- <h2 style="font-weight: bold; margin-bottom: 50px;">Register User</h2> -->
 
     <mat-card-content>
+
+      <div fxLayout="column" class="example-form">
+        
     <form [formGroup]="form" (submit)="createAppointment()" class="example-form">
       
-      <table class="example-full-width" cellspacing="0"><tr>
-        <td><mat-form-field class="example-full-width">
+      <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="space-between center" fxLayoutGap="20px"  class="example-full-width">
+        <!-- <div fxFlex="50" class="example-full-width"> -->
+          <mat-form-field fxFlex="50" class="example-full-width">
           <mat-label>First name</mat-label>
           <input id="firstname" formControlName="firstname" matInput>
-        </mat-form-field></td>
-        <td><mat-form-field class="example-full-width">
+        </mat-form-field>
+        <mat-form-field fxFlex="50" class="example-full-width">
           <mat-label>Last name</mat-label>
           <input id="lastname" formControlName="lastname" matInput>
-        </mat-form-field></td>
-      </tr></table>
+        </mat-form-field>
+      </div>
 
-          <mat-form-field class="example-full-width">
+        <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="space-between center" class="example-full-width">
+          <mat-form-field fxFlex="100" class="example-full-width">
               <mat-label>Address</mat-label>
               <textarea id="address" formControlName="address" matInput placeholder="Ex. 100 Main St">1600 Amphitheatre Pkwy</textarea>
             </mat-form-field>
+          </div>
 
-        <table class="example-full-width" cellspacing="0"><tr>
-          <td><mat-form-field class="example-full-width">
+            <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="space-between center" fxLayoutGap="20px"  class="example-full-width">
+              <!-- <div fxFlex="50" class="example-full-width"> -->
+                <mat-form-field fxFlex="50" class="example-full-width">
               <mat-label>Telephone</mat-label>
               <span matPrefix>+234 &nbsp;</span>
               <input id="phone" formControlName="phone" type="text" matInput placeholder="555-555-1234">
               <mat-icon matSuffix>mode_edit</mat-icon>
-            </mat-form-field></td>
-          <td><mat-form-field class="example-full-width">
+            </mat-form-field>
+            <mat-form-field fxFlex="50" class="example-full-width">
               <mat-label>Email</mat-label>
               <input id="email" formControlName="email" matInput  placeholder="Ex. pat@example.com">
               <mat-error *ngIf="form.controls.email.hasError('email') && !form.controls.email.hasError('required')">
@@ -54,11 +61,12 @@
               <mat-error *ngIf="form.controls.email.hasError('required')">
                 Email is <strong>required</strong>
               </mat-error>
-            </mat-form-field></td>
-        </tr></table>
+            </mat-form-field>
+            </div>
 
-      <table class="example-full-width" cellspacing="0"><tr>
-          <td><mat-form-field class="example-full-width">
+        <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="space-between center" fxLayoutGap="20px"  class="example-full-width">
+          <!-- <div fxFlex="50" class="example-full-width"> -->
+            <mat-form-field fxFlex="50" class="example-full-width">
               <mat-label>Room Booked</mat-label>
               <mat-select formControlName="roomBooked" required>
                 <mat-option>--</mat-option>
@@ -67,8 +75,8 @@
                 </mat-option>
               </mat-select>
               <mat-error *ngIf="form.controls.roomBooked.hasError('required')">Please choose a room</mat-error>
-            </mat-form-field></td>
-            <td><mat-form-field class="example-full-width">
+            </mat-form-field>
+            <mat-form-field fxFlex="50" class="example-full-width">
               <mat-label>Amount Paid</mat-label>
               <mat-select formControlName="amountPaid" required>
                 <mat-option>--</mat-option>
@@ -77,15 +85,22 @@
                 </mat-option>
               </mat-select>
               <mat-error *ngIf="form.controls.amountPaid.hasError('required')">Please choose an amount</mat-error>
-            </mat-form-field></td>
-            
-        </tr></table>
+            </mat-form-field>
+          </div>
 
-        
-
+          <!-- <div class="example-full-width">
+          <mat-radio-group  formControlName="status" fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="space-between" fxLayoutGap="20px" aria-label="Select an option">
+            <mat-radio-button color="primary" *ngFor="let statu of userstatus" [value]="statu">
+              {{statu}}
+            </mat-radio-button>
+          </mat-radio-group>
+          </div> -->
+          
         <button type="submit" mat-raised-button color="primary">Submit</button>
 
       </form>
+
+    </div>
     </mat-card-content>
   </mat-card>
 

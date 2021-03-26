@@ -17,6 +17,7 @@ export class HotelService {
   // data : any
   public allUsers;
   private userById;
+  status: string = "Checked In";
 
   // constructor(private store: Store<UserState>) { }
 
@@ -32,7 +33,8 @@ export class HotelService {
 }
 
 public add(data: UserDetail) {
-  data._id = new Date().getTime(); 
+  data._id = new Date().getTime();
+  data.status = this.status;  
   this.store.dispatch(new UserActions.AddUser(data));
 }
 

@@ -26,6 +26,8 @@ export class RegisterUserComponent implements OnInit {
 
   form: FormGroup;
 
+  userstatus: string[] = ['Check In', 'Check Out', 'Reserve'];
+
   rooms: Room[] = [
     {name: 'one Room'},
     {name:'two Room'},
@@ -58,7 +60,8 @@ export class RegisterUserComponent implements OnInit {
       phone: new FormControl('', Validators.required),
       roomBooked: new FormControl('', Validators.required),
       date:  new FormControl((new Date()).toISOString()),
-      status: new FormControl(this.status),
+      // status: new FormControl(this.status),
+      // status: new FormControl('', Validators.required),
       amountPaid : new FormControl('', Validators.required)
     });
   }
@@ -74,7 +77,10 @@ export class RegisterUserComponent implements OnInit {
                     verticalPosition: this.verticalPosition,
                   });
       // this.hotelService.storeCurrentData(this.form.value);
-      this.status = "Checked In"
+      // this.status = "Checked In"
+      // this.form.patchValue( {
+      //   status: "Checked In"
+      // });
       this.router.navigate(['/view-users']);
 
                 }

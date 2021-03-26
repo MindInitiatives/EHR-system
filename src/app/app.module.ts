@@ -20,12 +20,18 @@ import { userReducers } from './user/store/reducer/reducer.reducer';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { ViewUsersComponent } from './components/view-users/view-users.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { CreateRoomComponent } from './components/create-room/create-room.component';
+import { ViewRoomsComponent } from './components/view-rooms/view-rooms.component';
+import { RoomDetailComponent } from './components/room-detail/room-detail.component';
 
 // export const metaReducers: MetaReducer<State>[] = !environment.production ? [storeFreeze]: [];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CreateRoomComponent,
+    ViewRoomsComponent,
+    RoomDetailComponent
   ],
   imports: [
     BrowserModule,

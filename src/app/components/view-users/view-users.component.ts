@@ -1,14 +1,16 @@
 import { DatePipe } from '@angular/common';
-import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { ChangeDetectorRef, Component, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
+import * as moment from 'moment';
+import { Moment } from 'moment';
 import { Observable } from 'rxjs';
 import { AppState } from 'src/app/app.state';
 import { UserDetail } from 'src/app/models/user.model';
@@ -111,7 +113,9 @@ export class ViewUsersComponent implements OnInit {
   }
 
   viewdetail(data) {
-    this.hotelService.getDetail(data._id);
+    // this.hotelService.getDetail(data._id);
+    console.log('view record ID>>>', data._id);
+    this.router.navigate(['/user-details'], { queryParams: { id: data._id } });
   }
 
   editRecord(id) {
@@ -119,5 +123,176 @@ export class ViewUsersComponent implements OnInit {
     this.router.navigate(['/edit-user'], { queryParams: { id: id } });
     // this.router.navigate(['/edit-user', id]);
 }
+
+openDialog(id: UserDetail): void {
+      
+  this.detail = id;
+   console.log(id);
+
+ const dialogRef = this.dialog.open(EditModalComponent, {
+   width: '50%',
+   autoFocus: true,
+   data: {
+     _id : this.detail._id,
+     email : this.detail.email,
+     firstname: this.detail.firstname,
+     lastname: this.detail.lastname,
+     address: this.detail.address,
+     phone: this.detail.phone,
+     roomBooked: this.detail.roomBooked,
+     status: this.detail.status,
+     date: this.detail.date
+   }
+ })
+ // .afterClosed().subscribe(result => {
+ //   this.refresh();
+ // });
+
+ dialogRef.disableClose = true;
+
+}
+// refresh() {
+//   this.listData.data.push(new this.users$())
+// }
+
+}
+
+interface Room {
+  name: string;
+}
+
+interface Amount {
+  price: number
+}
+
+interface Status {
+  name: string;
+  value: string;
+}
+
+@Component({
+  selector: 'dialog-box',
+  templateUrl: 'dialog-box.component.html',
+  styleUrls: ['./view-users.component.css'],
+    providers: [
+      {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
+    ]
+  })
+export class EditModalComponent implements OnInit, OnDestroy {
+
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+      verticalPosition: MatSnackBarVerticalPosition = 'top';
+      rooms: Room[] = [
+        {name: 'one Room'},
+        {name:'two Room'},
+        {name:'mini Flat'},
+        {name:'Self'}
+      ];
+      amounts: Amount[] = [
+        {price: 2000},
+        {price: 3000},
+        {price: 4000},
+        {price: 5000}
+      ];
+      
+      userstatus: Status[] = [
+        {name: 'Check In', value: 'Checked In'},
+        {name: 'Check Out', value: 'Checked Out'},
+        {name: 'Reserve', value: 'Reserved'}
+      ]
+
+      minDate: Date;
+      maxDate: Date;
+      public loading = true;
+      public errorMsg: string;
+      public successMsg: String;
+    currentYear: number;
+
+    private userSub;
+    public userDetail;
+    private userId: number;
+    form: FormGroup;
+
+  constructor(
+        private hotelService : HotelService,
+        private _snackBar: MatSnackBar,
+        public dialogRef: MatDialogRef<EditModalComponent>,
+        @Inject(MAT_DIALOG_DATA) public data: UserDetail,
+        private router: Router, 
+        // private activatedRoute: ActivatedRoute
+        ) { }
+
+  ngOnInit(): void {
+
+    this.form = new FormGroup({
+      firstname: new FormControl('', Validators.required),
+      lastname: new FormControl('', Validators.required),
+      address: new FormControl('', Validators.required),
+      email: new FormControl('', [
+        Validators.required,
+        Validators.email,
+      ]),
+      phone: new FormControl('', Validators.required),
+      roomBooked: new FormControl('', Validators.required),
+      date:  new FormControl((new Date()).toISOString()),
+      status: new FormControl('', Validators.required),
+      amountPaid : new FormControl('', Validators.required)
+    });
+
+    // this.activatedRoute.queryParams.subscribe((params: Params) => {
+      
+      this.userId  = this.data._id;
+      const detail = this.hotelService.getDetail(this.userId);
+      this.userSub = detail.subscribe((res) => {
+          if(res !== undefined) {
+              this.userDetail = res;
+              this.form.patchValue( {
+                firstname: this.userDetail.firstname,
+                lastname: this.userDetail.lastname,
+                phone: this.userDetail.phone,
+                roomBooked: this.userDetail.roomBooked,
+                address: this.userDetail.address,
+                date: this.userDetail.date,
+                email: this.userDetail.email,
+                status: this.userDetail.status,
+                amountPaid : this.userDetail.amountPaid
+              })
+          } else {
+              this.userDetail = {};
+          }
+      })
+  // });
+    this.minDate = new Date();
+this.maxDate = new Date(this.currentYear + 1, 11, 31);
+    
+
+    
+  }
+
+ngOnDestroy() {
+  this.userSub.unsubscribe()
+}
+
+myDateFilter = (m: Moment | null): boolean => {
+const day = (m || moment()).day();
+return day !== 0 && day !== 6;
+}
+
+onNoClick(): void {
+  this.dialogRef.close();
+}
+
+onSubmitEditForm() {
+    console.log(this.userDetail);
+    console.log(this.form.value);
+    // console.log(this.form.get('_id').value);
+    if (this.form.valid) {
+    this.hotelService.edit(this.userDetail._id, this.form.value);
+    // this.router.navigate(['/view-user'], { queryParams: { id: data._id } });
+    this.router.navigate(['/view-users']);
+    }
+    // this.listData.data.splice(0, 0);
+  }
+  
 
 }

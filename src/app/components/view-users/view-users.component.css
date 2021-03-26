@@ -10,3 +10,68 @@
 .mat-column-actions {
     text-align: left;
   }
+
+  .mat-content {
+    padding: 50px;
+}
+.example-form {
+    min-width: 150px;
+    max-width: 1500px;
+    /* // width: 100%; */
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  }
+  
+  .example-full-width {
+    padding: 10px 0 10px 0;
+    width: 100%;
+    /* // display: inline-block;
+    // margin: auto;
+    // top: 0;
+    // right: 0;
+    // bottom: 0;
+    // left: 0; */
+  }
+
+  .example-half-width {
+    padding: 10px;
+    width: 50%;
+    /* // display: inline-block;
+    // margin: auto;
+    // top: 0;
+    // right: 0;
+    // bottom: 0;
+    // left: 0; */
+  }
+  
+  .inline-block {
+    display: inline-block;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 600px;
+}
+  td {
+    padding-right: 12px;
+  }
+
+  .badge-danger, .badge-success, .badge-warn {
+    font-weight: bolder;
+  }
+
+  .badge-danger {
+    color: red;
+  }
+
+  .badge-success {
+    color: green;
+  }
+
+  .badge-warn {
+    color: yellow
+  }

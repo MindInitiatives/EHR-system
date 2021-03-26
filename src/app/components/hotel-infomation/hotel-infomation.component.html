@@ -1,0 +1,101 @@
+<div class="mat-content">
+
+    <div class="app-page-title">
+      <div class="page-title-wrapper">
+          <div class="page-title-heading">
+              <div class="page-title-icon">
+                <mat-icon fontSet="material-icons-outlined">supervised_user_circle</mat-icon>
+              </div>
+              <div>Hotel Information
+                  <div class="page-title-subheading">Information Management / Hotel Information
+                  </div>
+              </div>
+          </div>
+           
+        </div>
+  </div>
+  
+    <mat-card>
+  
+      <mat-card-content>
+  
+        <div fxLayout="column" class="example-form">
+          
+      <form [formGroup]="form" (submit)="AddInfo()" class="example-form">
+
+        <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="space-between center" fxLayoutGap="20px"  class="example-full-width">
+        <div fxFlex="50" class="example-full-width" class="profile-picture-section">
+            <div fxLayout="row">
+              <div class="small-12 medium-2 large-2 columns">
+                <div class="circle">
+                  <img id="p-pic" class="profile-pic" src="https://placehold.it/400x400">
+        
+                </div>
+                <div class="p-image">
+                    
+                    <input formControlName="hotelImage" (change)="uploadFileEvt($event)" class="file-upload" type="file" accept="image/*" #file>
+<button type="button" (click)="file.click()" mat-icon-button>
+<mat-icon class="upload-button" >camera_alt</mat-icon>
+</button>
+                    
+                 </div>
+             </div>
+           </div>
+          </div>
+        </div>
+        
+        <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="space-between center" fxLayoutGap="20px"  class="example-full-width">
+          <!-- <div fxFlex="50" class="example-full-width"> -->
+            <mat-form-field appearance="outline" fxFlex="100" class="example-full-width">
+            <mat-label>Hotel Name</mat-label>
+            <input id="hotelName" formControlName="hotelName" matInput>
+          </mat-form-field>
+        </div>
+
+        <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="space-between center" fxLayoutGap="20px"  class="example-full-width">
+            <!-- <div fxFlex="50" class="example-full-width"> -->
+              <mat-form-field appearance="outline" fxFlex="100" class="example-full-width">
+              <mat-label>Contact Name</mat-label>
+              <input id="contactName" formControlName="contactName" matInput>
+            </mat-form-field>
+          </div>
+  
+          <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="space-between center" class="example-full-width">
+            <mat-form-field appearance="outline" fxFlex="100" class="example-full-width">
+                <mat-label>Address</mat-label>
+                <textarea id="address" formControlName="address" matInput placeholder="Ex. 100 Main St">1600 Amphitheatre Pkwy</textarea>
+              </mat-form-field>
+            </div>
+  
+              <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="space-between center" fxLayoutGap="20px"  class="example-full-width">
+                <!-- <div fxFlex="50" class="example-full-width"> -->
+                  <mat-form-field appearance="outline" fxFlex="50" class="example-full-width">
+                <mat-label>Telephone</mat-label>
+                <span matPrefix>+234 &nbsp;</span>
+                <input id="contactPhone" formControlName="contactPhone" type="text" matInput placeholder="555-555-1234">
+                <mat-icon matSuffix>mode_edit</mat-icon>
+              </mat-form-field>
+              <mat-form-field appearance="outline" fxFlex="50" class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input id="contactEmail" formControlName="contactEmail" matInput  placeholder="Ex. pat@example.com">
+                <mat-error *ngIf="form.controls.contactEmail.hasError('email') && !form.controls.contactEmail.hasError('required')">
+                  Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="form.controls.contactEmail.hasError('required')">
+                  Email is <strong>required</strong>
+                </mat-error>
+              </mat-form-field>
+              </div>
+
+              <div class="form-button">
+                <button type="submit" mat-raised-button color="warn">Edit</button>
+                <button type="submit" mat-raised-button color="primary">Submit</button>
+            </div>
+  
+        </form>
+  
+      </div>
+      </mat-card-content>
+    </mat-card>
+  
+  </div>

@@ -1,0 +1,80 @@
+<div class="mat-content">
+
+    <div class="app-page-title">
+      <div class="page-title-wrapper">
+          <div class="page-title-heading">
+              <div class="page-title-icon">
+                <mat-icon fontSet="material-icons-outlined">supervised_user_circle</mat-icon>
+              </div>
+              <div>User Details
+                  <div class="page-title-subheading">User Management / User Detail
+                  </div>
+              </div>
+          </div>
+           
+        </div>
+  </div>
+  
+    <mat-card>
+  
+      <!-- <h2 style="font-weight: bold; margin-bottom: 50px;">Register User</h2> -->
+  
+      <mat-card-content>
+
+        <!-- <mat-list>
+            <mat-list-item>Item 1</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Item 2</mat-list-item>
+            <mat-divider></mat-divider>
+            <mat-list-item>Item 3</mat-list-item>
+          </mat-list> -->
+      <div fxLayout="column" class="example-form">
+        
+        <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="space-between center" fxLayoutGap="20px"  class="example-full-width">
+            <div fxFlex="50" class="example-full-width">
+            <mat-label> <span>Firstname :</span> {{userDetail.firstname}}</mat-label>
+          </div>
+
+          <div fxFlex="50" class="example-full-width">
+            <mat-label> <span>Lastname :</span> {{userDetail.lastname}}</mat-label>
+          </div>
+
+        </div>
+
+        <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="space-between center" class="example-full-width">
+        <div fxFlex="100" class="example-full-width">
+                <mat-label> <span>Address :</span> {{userDetail.address}}</mat-label>
+              </div>
+            </div>
+
+            <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="space-between center" fxLayoutGap="20px"  class="example-full-width">
+                <div fxFlex="50" class="example-full-width">
+                <mat-label> <span>Phone :</span> {{userDetail.phone}}</mat-label>
+                <span matPrefix>+234 &nbsp;</span>
+              </div>
+
+              <div fxFlex="50" class="example-full-width">
+                <mat-label> <span>Email :</span> {{userDetail.email}}</mat-label>
+              </div>
+  
+            </div>
+
+            <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="space-between center" fxLayoutGap="20px"  class="example-full-width">
+                <div fxFlex="50" class="example-full-width">
+                <mat-label> <span>Room Booked :</span> {{userDetail.roomBooked}}</mat-label>
+            </div>
+            
+            <div fxFlex="50" class="example-full-width">
+                <mat-label> <span>Amount Paid :</span> {{userDetail.amountPaid}}</mat-label>
+            </div>
+            </div>
+  
+          
+  
+        <a class="form-button" [routerLink]="['/view-users']"><button type="button" mat-raised-button color="primary">Go Back</button></a>
+  
+        </div>
+      </mat-card-content>
+    </mat-card>
+  
+  </div>

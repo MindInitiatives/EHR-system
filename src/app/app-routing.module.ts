@@ -11,7 +11,7 @@ const routes: Routes = [
       import(`./layouts/default/default.module`).then(
         (m) => m.DefaultModule
       ),
-  }
+  },
 // { path: '**', redirectTo: '/login', pathMatch: 'full' }
 ];
 
