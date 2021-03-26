@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { HotelService } from 'src/app/services/hotel.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-user-detail',
@@ -14,7 +14,7 @@ export class UserDetailComponent implements OnInit {
     public userDetail;
     private userId: number;
 
-  constructor(private hotelService : HotelService,
+  constructor(private userService : UserService,
     private _snackBar: MatSnackBar,
     private router: Router, private activatedRoute: ActivatedRoute) { }
 
@@ -22,7 +22,7 @@ export class UserDetailComponent implements OnInit {
     this.activatedRoute.queryParams.subscribe((params: Params) => {
       
       this.userId  = params.id;
-      const detail = this.hotelService.getDetail(this.userId);
+      const detail = this.userService.getDetail(this.userId);
       this.userSub = detail.subscribe((res) => {
           if(res !== undefined) {
               this.userDetail = res;

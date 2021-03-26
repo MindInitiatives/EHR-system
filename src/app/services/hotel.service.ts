@@ -1,57 +1,53 @@
 import { Injectable } from '@angular/core';
-import *as UserActions from '../user/store/action/action.actions';
+import *as HotelActions from '../hotel/store/action/action.actions';
 import *as fromUserReducer from '../user/store/reducer/reducer.reducer';
-import *as fromUserSelector from '../user/store/selector/user.selectors';
+import *as fromHotelSelector from '../hotel/store/selector/user.selectors';
 import {createSelector, createFeatureSelector} from '@ngrx/store';
 import {Dictionary} from '@ngrx/entity';
 import {Store, select} from '@ngrx/store';
-import {AppState} from './../app.state';
-import { UserDetail } from '../models/user.model';
+import {HotelState} from './../app.state';
+// import { UserDetail } from '../models/user.model';
 // import { addUser, updateUser } from '../user/store/action/action.actions';
 import { UserState } from '../user/store/reducer/reducer.reducer';
+import { HotelDetail } from '../models/hotel.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HotelService {
   // data : any
-  public allUsers;
-  private userById;
+  public allHotels;
+  private hotelById;
   status: string = "Checked In";
 
   // constructor(private store: Store<UserState>) { }
 
-  constructor(private store: Store<AppState> ) {
-    this.allUsers = createSelector(fromUserSelector.selectAll, (entities) => {
+  constructor(private store: Store<HotelState> ) {
+    this.allHotels = createSelector(fromHotelSelector.selectAll, (entities) => {
         return entities;
     });
     
-    this.userById = createSelector(fromUserSelector.selectEntities, 
-        (entities: Dictionary<UserDetail>, props:{id: number}) => {    
+    this.hotelById = createSelector(fromHotelSelector.selectEntities, 
+        (entities: Dictionary<HotelDetail>, props:{id: number}) => {    
         return entities[props.id];
     });
 }
 
-public add(data: UserDetail) {
+public addHotel(data: HotelDetail) {
   data._id = new Date().getTime();
-  data.status = this.status;  
-  this.store.dispatch(new UserActions.AddUser(data));
+  this.store.dispatch(new HotelActions.AddHotel(data));
 }
 
 public list(){
-  return this.store.pipe(select(this.allUsers));     
-}
-
-public remove(id: number) { 
-  this.store.dispatch(new UserActions.RemoveUser(id));
+  return this.store.pipe(select(this.allHotels));     
 }
 
 public getDetail(id: number) { 
-  return this.store.pipe(select(this.userById, {id: id}));
+  return this.store.pipe(select(this.hotelById, {id: id}));
 }
 
-public edit(id: number, changes: UserDetail) { 
-  this.store.dispatch(new UserActions.UpdateUser(id, changes));
+public edit(id: number, changes: HotelDetail) { 
+  this.store.dispatch(new HotelActions.UpdateHotel(id, changes));
 } 
 
 

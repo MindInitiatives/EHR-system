@@ -1,4 +1,4 @@
-export interface RoomDetail {
+export interface HotelDetail {
     _id?: number;
     hotelName: string;
     hotelImage: string;

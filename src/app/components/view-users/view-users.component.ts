@@ -14,7 +14,7 @@ import { Moment } from 'moment';
 import { Observable } from 'rxjs';
 import { AppState } from 'src/app/app.state';
 import { UserDetail } from 'src/app/models/user.model';
-import { HotelService } from 'src/app/services/hotel.service';
+import { UserService } from 'src/app/services/user.service';
 
 
 export const MY_FORMATS = {
@@ -64,11 +64,11 @@ export class ViewUsersComponent implements OnInit {
   constructor(public datepipe: DatePipe,
     public dialog: MatDialog,private router: Router,
     private _snackBar: MatSnackBar, 
-    private hotelService: HotelService, 
+    private userService: UserService, 
     private store: Store<AppState>,
     private changeDetectorRefs: ChangeDetectorRef) { 
 
-    this.store.select(hotelService.allUsers).subscribe(users => {
+    this.store.select(userService.allUsers).subscribe(users => {
 
       
       if (users.length) {
@@ -214,7 +214,7 @@ export class EditModalComponent implements OnInit, OnDestroy {
     form: FormGroup;
 
   constructor(
-        private hotelService : HotelService,
+        private userService : UserService,
         private _snackBar: MatSnackBar,
         public dialogRef: MatDialogRef<EditModalComponent>,
         @Inject(MAT_DIALOG_DATA) public data: UserDetail,
@@ -242,7 +242,7 @@ export class EditModalComponent implements OnInit, OnDestroy {
     // this.activatedRoute.queryParams.subscribe((params: Params) => {
       
       this.userId  = this.data._id;
-      const detail = this.hotelService.getDetail(this.userId);
+      const detail = this.userService.getDetail(this.userId);
       this.userSub = detail.subscribe((res) => {
           if(res !== undefined) {
               this.userDetail = res;
@@ -287,7 +287,7 @@ onSubmitEditForm() {
     console.log(this.form.value);
     // console.log(this.form.get('_id').value);
     if (this.form.valid) {
-    this.hotelService.edit(this.userDetail._id, this.form.value);
+    this.userService.edit(this.userDetail._id, this.form.value);
     // this.router.navigate(['/view-user'], { queryParams: { id: data._id } });
     this.router.navigate(['/view-users']);
     }

@@ -17,6 +17,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { userReducers } from './user/store/reducer/reducer.reducer';
+import { hotelReducers } from './hotel/store/reducer/reducer.reducer';
 import { RegisterUserComponent } from './components/register-user/register-user.component';
 import { ViewUsersComponent } from './components/view-users/view-users.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
@@ -46,7 +47,8 @@ import { RoomDetailComponent } from './components/room-detail/room-detail.compon
     HttpClientModule,
     FormsModule, 
     StoreModule.forRoot({
-      users: userReducers
+      users: userReducers,
+      hotels: hotelReducers
     }),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 state

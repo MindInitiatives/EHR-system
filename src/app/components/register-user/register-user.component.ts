@@ -4,7 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { HotelService } from 'src/app/services/hotel.service';
+import { UserService } from 'src/app/services/user.service';
 
 interface Room {
   name: string;
@@ -45,7 +45,7 @@ export class RegisterUserComponent implements OnInit {
   status : string;
   constructor(public datepipe: DatePipe,
     private _snackBar: MatSnackBar, 
-    private hotelService: HotelService,
+    private userService: UserService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -70,7 +70,7 @@ export class RegisterUserComponent implements OnInit {
     console.log(this.form.value);
     // this.submitted = true;
     if (this.form.valid) {
-      this.hotelService.add(this.form.value);
+      this.userService.addUser(this.form.value);
       this._snackBar.open('User Added Successfully' , 'dismiss', {
                     duration: 1000,
                     horizontalPosition: this.horizontalPosition,
