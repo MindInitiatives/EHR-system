@@ -1,18 +1,14 @@
 <mat-nav-list>
 
     <mat-list-item>
-        <a routerLinkActive="list-item-active" routerLink="/dashboard">
-            <div class="navButtonContent">
-                <mat-icon fontSet="material-icons-outlined">dashboard</mat-icon><span class="nav-text">Dashboard</span>
+        <a>
+            <div class="navButtonContent" [matMenuTriggerFor]="menu">
+                <mat-icon fontSet="material-icons-outlined">supervised_user_circle</mat-icon><span class="nav-text">User Management</span>
             </div>
-        </a>
-    </mat-list-item>
-    <mat-divider></mat-divider>
-    <mat-list-item>
-        <a routerLinkActive="list-item-active" routerLink="/user-management">
-            <div class="navButtonContent">
-                <mat-icon fontSet="material-icons-outlined">fact_check</mat-icon><span class="nav-text">User Management</span>
-            </div>
+            <mat-menu #menu="matMenu">
+                <a routerLinkActive="list-item-active" routerLink="/register-user"><button mat-menu-item>Register User</button></a>
+                <a routerLinkActive="list-item-active" routerLink="/view-users"><button mat-menu-item>View Users</button></a>
+              </mat-menu>
         </a>
     </mat-list-item>
     <mat-divider></mat-divider>

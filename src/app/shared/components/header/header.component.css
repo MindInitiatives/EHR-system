@@ -5,3 +5,8 @@ ul li {
     position: relative;
     z-index: 2;
  }
+
+ .mat-toolbar.mat-primary {
+    background: #59D9AC !important;
+    color: #fff;
+}

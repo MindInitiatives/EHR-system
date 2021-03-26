@@ -1,0 +1,135 @@
+<div class="mat-content">
+
+    <h2 style="font-weight: bold; margin-bottom: 50px;">Edit User</h2>
+
+    <!-- <form class="example-form" #editUserForm="ngForm" (ngSubmit)="onSubmitEditForm(editUserForm);" >
+  
+    <table class="example-full-width" cellspacing="0"><tr>
+      <td><mat-form-field class="example-full-width">
+        <mat-label>First name</mat-label>
+        <input #firstname="ngModel" name="firstname" id="firstname" [(ngModel)]="userDetail.firstname" matInput>
+      </mat-form-field></td>
+      <td><mat-form-field class="example-full-width">
+        <mat-label>Last name</mat-label>
+        <input #lastname="ngModel" name="lastname" id="lastname" [(ngModel)]="userDetail.lastname" matInput>
+      </mat-form-field></td>
+    </tr></table>
+        <mat-form-field class="example-full-width">
+            <mat-label>Address</mat-label>
+            <textarea #address="ngModel" name="address" id="address" [(ngModel)]="userDetail.address" matInput placeholder="Ex. 100 Main St">1600 Amphitheatre Pkwy</textarea>
+          </mat-form-field>
+    
+      <table class="example-full-width" cellspacing="0"><tr>
+        <td><mat-form-field class="example-full-width">
+            <mat-label>Telephone</mat-label>
+            <span matPrefix>+234 &nbsp;</span>
+            <input #phone="ngModel" name="phone" id="phone" [(ngModel)]="userDetail.phone" type="text" matInput placeholder="555-555-1234">
+            <mat-icon matSuffix>mode_edit</mat-icon>
+          </mat-form-field></td>
+        <td><mat-form-field class="example-full-width">
+            <mat-label>Email</mat-label>
+            <input #email="ngModel" name="email" id="email" [(ngModel)]="userDetail.email" matInput  placeholder="Ex. pat@example.com">
+            <div [hidden]="email.valid || (email.pristine && !editUserForm.submitted)" class="text-danger">
+                Email is required.
+            </div>
+          </mat-form-field></td>
+      </tr></table>
+    
+    <table class="example-full-width" cellspacing="0"><tr>
+        <td><mat-form-field class="example-full-width">
+            <mat-label>Room Booked</mat-label>
+            <mat-select #roomBooked="ngModel" name="roomBooked" id="roomBooked" [(ngModel)]="userDetail.roomBooked" required>
+              <mat-option>--</mat-option>
+              <mat-option *ngFor="let room of rooms" [value]="room.name">
+                {{room.name}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field></td>
+          <td><mat-form-field class="example-full-width">
+            <mat-label>Amount Paid</mat-label>
+            <mat-select #amountPaid="ngModel" name="amountPaid" id="amountPaid" [(ngModel)]="userDetail.amountPaid" required>
+              <mat-option>--</mat-option>
+              <mat-option *ngFor="let amount of amounts" [value]="amount.price">
+                {{amount.price}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field></td>
+          <td><mat-form-field class="example-full-width">
+            <input #date="ngModel" name="date" id="date" [(ngModel)]="userDetail.date" matInput [matDatepicker]="picker"  [matDatepickerFilter]="myDateFilter" [min]="minDate" [max]="maxDate" placeholder="Choose a date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field></td>
+      </tr></table>
+    
+      <button type="submit" mat-raised-button color="primary">Submit</button>
+      
+      </form> -->
+
+      <form [formGroup]="form" (submit)="onSubmitEditForm();"  class="example-form">
+      
+        <table class="example-full-width" cellspacing="0"><tr>
+          <td><mat-form-field class="example-full-width">
+            <mat-label>First name</mat-label>
+            <input id="firstname" formControlName="firstname" [value]="userDetail.firstname" matInput>
+          </mat-form-field></td>
+          <td><mat-form-field class="example-full-width">
+            <mat-label>Last name</mat-label>
+            <input id="lastname" formControlName="lastname" [value]="userDetail.lastname" matInput>
+          </mat-form-field></td>
+        </tr></table>
+  
+            <mat-form-field class="example-full-width">
+                <mat-label>Address</mat-label>
+                <textarea id="address" formControlName="address" [value]="userDetail.address" matInput placeholder="Ex. 100 Main St">1600 Amphitheatre Pkwy</textarea>
+              </mat-form-field>
+  
+          <table class="example-full-width" cellspacing="0"><tr>
+            <td><mat-form-field class="example-full-width">
+                <mat-label>Telephone</mat-label>
+                <span matPrefix>+234 &nbsp;</span>
+                <input id="phone" formControlName="phone" [value]="userDetail.phone" type="text" matInput placeholder="555-555-1234">
+                <mat-icon matSuffix>mode_edit</mat-icon>
+              </mat-form-field></td>
+            <td><mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input id="email" formControlName="email" [value]="userDetail.email" matInput  placeholder="Ex. pat@example.com">
+                <mat-error *ngIf="form.controls.email.hasError('email') && !form.controls.email.hasError('required')">
+                  Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="form.controls.email.hasError('required')">
+                  Email is <strong>required</strong>
+                </mat-error>
+              </mat-form-field></td>
+          </tr></table>
+  
+        <table class="example-full-width" cellspacing="0"><tr>
+            <td><mat-form-field class="example-full-width">
+                <mat-label>Room Booked</mat-label>
+                <mat-select formControlName="roomBooked" [value]="userDetail.roomBooked" required>
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let room of rooms" [value]="room.name">
+                    {{room.name}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.controls.roomBooked.hasError('required')">Please choose a room</mat-error>
+              </mat-form-field></td>
+              <td><mat-form-field class="example-full-width">
+                <mat-label>Amount Paid</mat-label>
+                <mat-select formControlName="amountPaid" [value]="userDetail.amountPaid" required>
+                  <mat-option>--</mat-option>
+                  <mat-option *ngFor="let amount of amounts" [value]="amount.price">
+                    {{amount.price}}
+                  </mat-option>
+                </mat-select>
+                <mat-error *ngIf="form.controls.amountPaid.hasError('required')">Please choose an amount</mat-error>
+              </mat-form-field></td>
+              
+          </tr></table>
+  
+          
+  
+          <button type="submit" mat-raised-button color="primary">Submit</button>
+  
+        </form>
+
+      </div>

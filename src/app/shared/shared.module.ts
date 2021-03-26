@@ -11,14 +11,12 @@ import { FlexLayoutModule } from '@angular/flex-layout'
 import { MatMenuModule } from '@angular/material/menu'
 import { MatListModule} from '@angular/material/list'
 import { RouterModule } from '@angular/router';
-import { CardComponent } from './widgets/card/card.component';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
     SidebarComponent,
-    CardComponent,
   ],
   imports: [
     CommonModule,
@@ -36,8 +34,7 @@ import { CardComponent } from './widgets/card/card.component';
   exports: [
     HeaderComponent,
     FooterComponent,
-    SidebarComponent,
-    CardComponent
+    SidebarComponent
   ]
 })
 export class SharedModule { }

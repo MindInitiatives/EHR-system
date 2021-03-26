@@ -1,7 +1,25 @@
 <div class="mat-content">
 
-    <h2 style="font-weight: bold; margin-bottom: 50px;">Register User</h2>
+  <div class="app-page-title">
+    <div class="page-title-wrapper">
+        <div class="page-title-heading">
+            <div class="page-title-icon">
+              <mat-icon fontSet="material-icons-outlined">supervised_user_circle</mat-icon>
+            </div>
+            <div>Register User
+                <div class="page-title-subheading">User Management / Register User
+                </div>
+            </div>
+        </div>
+         
+      </div>
+</div>
 
+  <mat-card>
+
+    <!-- <h2 style="font-weight: bold; margin-bottom: 50px;">Register User</h2> -->
+
+    <mat-card-content>
     <form [formGroup]="form" (submit)="createAppointment()" class="example-form">
       
       <table class="example-full-width" cellspacing="0"><tr>
@@ -50,6 +68,17 @@
               </mat-select>
               <mat-error *ngIf="form.controls.roomBooked.hasError('required')">Please choose a room</mat-error>
             </mat-form-field></td>
+            <td><mat-form-field class="example-full-width">
+              <mat-label>Amount Paid</mat-label>
+              <mat-select formControlName="amountPaid" required>
+                <mat-option>--</mat-option>
+                <mat-option *ngFor="let amount of amounts" [value]="amount.price">
+                  {{amount.price}}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="form.controls.amountPaid.hasError('required')">Please choose an amount</mat-error>
+            </mat-form-field></td>
+            
         </tr></table>
 
         
@@ -57,5 +86,7 @@
         <button type="submit" mat-raised-button color="primary">Submit</button>
 
       </form>
+    </mat-card-content>
+  </mat-card>
 
 </div>

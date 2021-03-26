@@ -15,6 +15,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle'
 import { MatPaginatorModule } from '@angular/material/paginator'
 import { MatSortModule } from '@angular/material/sort'
 import { MatTableModule } from '@angular/material/table'
+import { MatTableResponsiveModule } from 'src/app/shared/widgets/mat-table-responsive/mat-table-responsive.module';
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
@@ -24,22 +25,24 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import {HttpClientModule} from '@angular/common/http';
-import { UserManagementComponent } from 'src/app/modules/user-management/user-management.component';
-import { RoomManagementComponent } from 'src/app/modules/room-management/room-management.component';
-import { InformationManagementComponent } from 'src/app/modules/information-management/information-management.component';
 import { DefaultComponent } from './default.component';
 import { StoreModule } from '@ngrx/store';
-import { userFeatureKey, reducer } from 'src/app/user/store/reducer/reducer.reducer';
+// import { userFeatureKey, reducer } from 'src/app/user/store/reducer/reducer.reducer';
+import { EditUserComponent } from 'src/app/components/edit-user/edit-user.component';
+import { ViewUsersComponent } from 'src/app/components/view-users/view-users.component';
+import { UserDetailComponent } from 'src/app/components/user-detail/user-detail.component';
+import { RegisterUserComponent } from 'src/app/components/register-user/register-user.component';
+import { DefaultRoutingModule } from './default.routing';
 
 
 
 @NgModule({
   declarations: [
     DefaultComponent,
-    UserManagementComponent,
-    RoomManagementComponent,
-    InformationManagementComponent,
-    // DialogOverviewExampleDialog
+    EditUserComponent,
+    ViewUsersComponent,
+    UserDetailComponent,
+    RegisterUserComponent
   ],
   imports: [
     CommonModule,
@@ -53,6 +56,7 @@ import { userFeatureKey, reducer } from 'src/app/user/store/reducer/reducer.redu
     MatSortModule,
     MatProgressSpinnerModule,
     MatTableModule,
+    MatTableResponsiveModule,
     MatFormFieldModule,
     MatToolbarModule,
     MatDialogModule,
@@ -67,7 +71,8 @@ import { userFeatureKey, reducer } from 'src/app/user/store/reducer/reducer.redu
     MatButtonToggleModule,
     MatSelectModule,
     HttpClientModule,
-    StoreModule.forFeature(userFeatureKey, reducer),
+    DefaultRoutingModule,
+    // StoreModule.forFeature(userFeatureKey, reducer),
 
   ],
   providers : [ HotelService, ValidateService, DatePipe]

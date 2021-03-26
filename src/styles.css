@@ -1,4 +1,78 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import '../src/app/shared/widgets/mat-table-responsive/mat-table-responsive.directive.css';
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.mat-content .app-page-title {
+    background: rgba(255, 255, 255, 0.45);
+}
+
+.app-page-title {
+  padding: 30px;
+  margin: -50px -50px 30px;
+  position: relative;
+}
+
+.app-page-title .page-title-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.app-page-title .page-title-heading {
+  font-size: 1.25rem;
+  font-weight: 400;
+  margin-bottom: 5px;
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+.app-page-title .page-title-heading, .app-page-title .page-title-subheading {
+  margin: 0;
+  padding: 0;
+}
+
+.app-page-title .page-title-icon {
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  padding: .43333rem;
+  margin: 0 30px 0 0;
+  background: #fff;
+  box-shadow: 0 0.46875rem 2.1875rem rgb(4 9 20 / 3%), 0 0.9375rem 1.40625rem rgb(4 9 20 / 3%), 0 0.25rem 0.53125rem rgb(4 9 20 / 5%), 0 0.125rem 0.1875rem rgb(4 9 20 / 3%);
+  border-radius: .25rem;
+  width: 40px;
+  height: 40px;
+}
+
+:host .mat-icon{
+  background-repeat: no-repeat;
+  fill: currentColor;
+  height: 30px;
+  font-size: 30px;
+  display: block;
+  /* margin: 0 auto 5px; */
+  text-align: center;
+  width: 30px;
+
+}
+
+.app-page-title .page-title-icon mat-icon {
+  margin: auto;
+}
+
+.app-page-title .page-title-subheading {
+  padding: 3px 0 0;
+  font-size: .88rem;
+  opacity: .6;
+}
+
+.app-page-title .page-title-heading, .app-page-title .page-title-subheading {
+  margin: 0;
+  padding: 0;
+}
