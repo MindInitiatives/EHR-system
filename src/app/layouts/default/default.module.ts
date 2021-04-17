@@ -35,6 +35,9 @@ import { UserDetailComponent } from 'src/app/components/user-detail/user-detail.
 import { RegisterUserComponent } from 'src/app/components/register-user/register-user.component';
 import { DefaultRoutingModule } from './default.routing';
 import { HotelInfomationComponent } from 'src/app/components/hotel-infomation/hotel-infomation.component';
+import { ViewRoomsComponent } from 'src/app/components/view-rooms/view-rooms.component';
+import { CreateRoomComponent } from 'src/app/components/create-room/create-room.component';
+import { RoomDetailComponent } from 'src/app/components/room-detail/room-detail.component';
 
 
 
@@ -46,7 +49,10 @@ import { HotelInfomationComponent } from 'src/app/components/hotel-infomation/ho
     UserDetailComponent,
     RegisterUserComponent,
     EditModalComponent,
-    HotelInfomationComponent
+    HotelInfomationComponent,
+    CreateRoomComponent,
+    ViewRoomsComponent,
+    RoomDetailComponent,
   ],
   imports: [
     CommonModule,

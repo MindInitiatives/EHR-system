@@ -1,0 +1,96 @@
+<section class="hero-wrap js-fullheight" style="background-image: url(../../../assets/img/ehr-bg.jpg); height: 1000px; background-position: 50% 0%;">
+    <div class="overlay"></div>
+      <div fxLayout="row" class="no-gutters slider-text align-items-center justify-content-center text-center">
+        <div class="inline-block">
+                        <!-- <div class="text text-center"> -->
+                <div class="logo">
+                    <img src="../../../assets/img/ehr-logo.png" width="200" alt="logo">
+                </div>
+                <form (submit)="onLoginSubmit()">
+                <div class="example-container align-items-center d-flex justify-content-center">
+                   <mat-card>
+                    <mat-card-content>
+                      <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="space-between center" class="example-full-width">
+                   
+                            <div class="login-wrap p-4 p-lg-5" fxFlex="50">
+                                <!-- <div class="login-wrap p-4 p-lg-5"> -->
+                                    <div class="d-flex">
+                                    <div class="w-100">
+                                    <h3 class="mb-4">Sign In</h3>
+                                    </div>
+                                    </div>
+                                    <mat-form-field class="w-100" appearance="outline">
+                    <mat-label>username</mat-label>
+                    <input matInput type="text" name="username" [(ngModel)]="username" placeholder="username">
+                  </mat-form-field>
+                  <!-- <span> -->
+                    <mat-form-field class="w-100" appearance="outline">
+                      <mat-label>Enter your password</mat-label>
+                      <input name="password" [(ngModel)]="password" matInput [type]="hide ? 'password' : 'text'">
+                      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      </button>
+                    </mat-form-field>
+                  <!-- </span> -->
+                      <button mat-flat-button aria-label="Show an example snack-bar" color="primary">LOGIN</button>
+                                    <!-- <form action="#" class="signin-form">
+                                    <div class="form-group mb-3">
+                                    <label class="label" for="name">Username</label>
+                                    <input type="text" class="form-control" placeholder="Username" required>
+                                    </div>
+                                    <div class="form-group mb-3">
+                                    <label class="label" for="password">Password</label>
+                                    <input type="password" class="form-control" placeholder="Password" required>
+                                    </div>
+                                    <div class="form-group">
+                                    <button type="submit" class="form-control btn btn-primary submit px-3">Sign In</button>
+                                    </div>
+                                    </form> -->
+                                    <!-- </div> -->
+                        </div>
+                        <!-- <div fxFlex="50"> -->
+                            <div fxFlex="50" class="text-wrap p-4 p-lg-5 text-center d-flex align-items-center">
+                                <div class="text w-100">
+                                <h2 class="title-text">Welcome to Enterprise<br>Hotel Reservation System</h2>
+                                <p>Simplified and efficient Hotel Reservation System Suitable for All Hotels</p>
+                                <!-- <a href="#" class="btn btn-white btn-outline-white">Sign Up</a> -->
+                                </div>
+                                </div>
+                        <!-- </div> -->
+                      </div>
+                    </mat-card-content>
+                  </mat-card>
+                  <!-- <mat-form-field class="no-line" appearance="none">
+                    <mat-label>username</mat-label>
+                    <input matInput type="text" name="username" [(ngModel)]="username" placeholder="username">
+                  </mat-form-field>
+                  <span>
+                    <mat-form-field class="border-left" appearance="none">
+                      <mat-label>Enter your password</mat-label>
+                      <input name="password" [(ngModel)]="password" matInput [type]="hide ? 'password' : 'text'">
+                      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      </button>
+                    </mat-form-field>
+                  </span>
+                      <button mat-flat-button aria-label="Show an example snack-bar" color="primary">LOGIN</button> -->
+                  </div>
+                </form>
+        </div>
+      </div>
+    <footer class="footer" role="contentinfo">
+        <!-- <div class="container"> -->
+          <div class="row justify-content-center text-center">
+            <!-- <div class="col-md-7"> -->
+              <p class="copyright">©&#65279;2020 INN-EHR</p>
+              <div class="credits">
+                
+                Designed by <a href="https://github.com/Mind_Initiatives">Minds Initiative</a>
+              </div>
+            <!-- </div> -->
+          </div>
+    
+        <!-- </div> -->
+      </footer>
+  </section>
+  

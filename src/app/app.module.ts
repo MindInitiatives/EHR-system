@@ -24,15 +24,16 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { CreateRoomComponent } from './components/create-room/create-room.component';
 import { ViewRoomsComponent } from './components/view-rooms/view-rooms.component';
 import { RoomDetailComponent } from './components/room-detail/room-detail.component';
+import { LoginComponent } from './components/login/login.component';
+import { MatCardModule } from '@angular/material/card';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 // export const metaReducers: MetaReducer<State>[] = !environment.production ? [storeFreeze]: [];
 
 @NgModule({
   declarations: [
     AppComponent,
-    CreateRoomComponent,
-    ViewRoomsComponent,
-    RoomDetailComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +43,8 @@ import { RoomDetailComponent } from './components/room-detail/room-detail.compon
     BrowserAnimationsModule,
     DefaultModule,
     MatButtonModule,
+    MatCardModule,
+    FlexLayoutModule,
     MatIconModule,
     MatSnackBarModule,
     HttpClientModule,

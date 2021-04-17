@@ -1,8 +1,12 @@
 footer {
+    position: fixed;
+            bottom: 0;
+            width: 100%;
+
     padding: 20px;
-    display: flex;
+    /* display: flex;
     align-items: flex-end;
-    justify-content: flex-end;
+    justify-content: flex-end; */
     color: antiquewhite;
     background-color: #313131;
 }
